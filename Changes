@@ -1,0 +1,22 @@
+Revision history for Dist::Zilla::Plugin::PodLoom
+
+0.08   April 14, 2010
+	- No longer distributed in Dist-Zilla-PluginBundle-CJM
+
+----------------------------------------------------------------------
+Prior to version 0.08, Dist::Zilla::Plugin::PodLoom was distributed as
+part of Dist-Zilla-PluginBundle-CJM.  This is the relevant history
+from that distribution.  It includes only the changes made to PodLoom.
+
+0.05   March 30, 2010
+	- Added SYNOPSIS
+	- Revised compile tests
+
+0.02   March 7, 2010
+	- Added POD tests
+	- Use the plugin's log method so the plugin name appears in the log
+	- Define abstract, module, & version only if they
+	  could be determined
+
+0.01   October 11, 2009
+	- Initial release
