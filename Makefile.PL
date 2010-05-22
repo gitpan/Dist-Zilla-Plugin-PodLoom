@@ -9,32 +9,42 @@ use ExtUtils::MakeMaker 6.31;
 
 
 my %WriteMakefileArgs = (
-                       'test' => {
-                                   'TESTS' => 't/*.t'
-                                 },
-                       'NAME' => 'Dist::Zilla::Plugin::PodLoom',
-                       'DISTNAME' => 'Dist-Zilla-Plugin-PodLoom',
-                       'CONFIGURE_REQUIRES' => {
-                                                 'ExtUtils::MakeMaker' => '6.31'
-                                               },
-                       'AUTHOR' => 'Christopher J. Madsen <perl@cjmweb.net>',
-                       'BUILD_REQUIRES' => {},
-                       'ABSTRACT' => 'Dist::Zilla plugin for Pod::Loom',
-                       'EXE_FILES' => [],
-                       'VERSION' => '0.08',
-                       'PREREQ_PM' => {
-                                        'Hash::Merge::Simple' => '0',
-                                        'Dist::Zilla' => '2',
-                                        'Pod::Loom' => '0',
-                                        'Dist::Zilla::Role::ModuleInfo' => '0.08',
-                                        'Moose' => '0.65'
-                                      },
-                       'LICENSE' => 'perl'
-                     );
+  'ABSTRACT' => 'Dist::Zilla plugin for Pod::Loom',
+  'AUTHOR' => 'Christopher J. Madsen <perl@cjmweb.net>',
+  'BUILD_REQUIRES' => {},
+  'CONFIGURE_REQUIRES' => {
+    'ExtUtils::MakeMaker' => '6.31'
+  },
+  'DISTNAME' => 'Dist-Zilla-Plugin-PodLoom',
+  'EXE_FILES' => [],
+  'LICENSE' => 'perl',
+  'NAME' => 'Dist::Zilla::Plugin::PodLoom',
+  'PREREQ_PM' => {
+    'Dist::Zilla' => '3',
+    'Dist::Zilla::Role::ModuleInfo' => '0.08',
+    'Hash::Merge::Simple' => '0',
+    'Moose' => '0.65',
+    'Pod::Loom' => '0'
+  },
+  'VERSION' => '3.00',
+  'test' => {
+    'TESTS' => 't/*.t'
+  }
+);
 
 
-delete $WriteMakefileArgs{BUILD_REQUIRES}
-  unless eval { ExtUtils::MakeMaker->VERSION(6.56) };
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
+  my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};
+  my $pp = $WriteMakefileArgs{PREREQ_PM}; 
+  for my $mod ( keys %$br ) {
+    if ( exists $pp->{$mod} ) {
+      $pp->{$mod} = $br->{$mod} if $br->{$mod} > $pp->{$mod}; 
+    }
+    else {
+      $pp->{$mod} = $br->{$mod};
+    }
+  }
+}
 
 delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
   unless eval { ExtUtils::MakeMaker->VERSION(6.52) };

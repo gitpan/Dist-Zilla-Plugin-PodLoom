@@ -1,4 +1,4 @@
-Dist::Zilla::Plugin::PodLoom version 0.08, released April 14, 2010
+Dist::Zilla::Plugin::PodLoom version 3.00, released May 22, 2010
 
 
 Dist::Zilla::Plugin::PodLoom is a plugin for Dist::Zilla that
@@ -21,7 +21,7 @@ DEPENDENCIES
 
   Package                        Minimum Version
   ------------------------------ ---------------
-  Dist::Zilla                     2
+  Dist::Zilla                     3
   Dist::Zilla::Role::ModuleInfo   0.08
   Hash::Merge::Simple             
   Moose                           0.65
@@ -30,10 +30,10 @@ DEPENDENCIES
 
 
 CHANGES
-    Here's what's new in version 0.08 of Dist::Zilla::Plugin::PodLoom:
+    Here's what's new in version 3.00 of Dist::Zilla::Plugin::PodLoom:
     (See the file "Changes" for the full revision history.)
 
-	- No longer distributed in Dist-Zilla-PluginBundle-CJM
+	- Now compatible with (and requires) Dist::Zilla 3
 
 
 

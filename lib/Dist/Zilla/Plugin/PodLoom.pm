@@ -17,8 +17,8 @@ package Dist::Zilla::Plugin::PodLoom;
 # ABSTRACT: Process module documentation through Pod::Loom
 #---------------------------------------------------------------------
 
-our $VERSION = '0.08';
-# This file is part of Dist-Zilla-Plugin-PodLoom 0.08 (April 14, 2010)
+our $VERSION = '3.00';
+# This file is part of Dist-Zilla-Plugin-PodLoom 3.00 (May 22, 2010)
 
 
 use Moose;
@@ -99,7 +99,7 @@ sub munge_file
       dist           => $self->zilla->name,
       license_notice => $self->zilla->license->notice,
       ($info->name ? (module => $info->name) : ()),
-      repository     => $self->zilla->distmeta->{resources}{repository},
+      repository     => $self->zilla->distmeta->{resources}{repository}{url},
       # Have to stringify version object:
       ($info->version ? (version => q{} . $info->version) : ()),
       zilla          => $self->zilla,
@@ -125,9 +125,9 @@ Dist::Zilla::Plugin::PodLoom - Process module documentation through Pod::Loom
 
 =head1 VERSION
 
-This document describes version 0.08 of
-Dist::Zilla::Plugin::PodLoom, released April 14, 2010
-as part of Dist-Zilla-Plugin-PodLoom version 0.08.
+This document describes version 3.00 of
+Dist::Zilla::Plugin::PodLoom, released May 22, 2010
+as part of Dist-Zilla-Plugin-PodLoom version 3.00.
 
 =head1 SYNOPSIS
 
@@ -180,7 +180,7 @@ The primary package of the file being processed
 
 =item repository
 
-C<< $zilla->distmeta->{resources}{repository} >>
+C<< $zilla->distmeta->{resources}{repository}{url} >>
 
 =item version
 
