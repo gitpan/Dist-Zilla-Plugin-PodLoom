@@ -1,4 +1,4 @@
-Dist::Zilla::Plugin::PodLoom version 3.00, released May 22, 2010
+Dist::Zilla::Plugin::PodLoom version 3.01, released December 1, 2010
 
 
 Dist::Zilla::Plugin::PodLoom is a plugin for Dist::Zilla that
@@ -30,10 +30,10 @@ DEPENDENCIES
 
 
 CHANGES
-    Here's what's new in version 3.00 of Dist::Zilla::Plugin::PodLoom:
+    Here's what's new in version 3.01 of Dist::Zilla::Plugin::PodLoom:
     (See the file "Changes" for the full revision history.)
 
-	- Now compatible with (and requires) Dist::Zilla 3
+	- For repository, prefer the 'web' key to the 'url' key
 
 
 
