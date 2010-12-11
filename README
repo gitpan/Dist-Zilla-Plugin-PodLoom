@@ -1,4 +1,4 @@
-Dist::Zilla::Plugin::PodLoom version 3.01, released December 1, 2010
+Dist::Zilla::Plugin::PodLoom version 3.02, released December 11, 2010
 
 
 Dist::Zilla::Plugin::PodLoom is a plugin for Dist::Zilla that
@@ -25,15 +25,16 @@ DEPENDENCIES
   Dist::Zilla::Role::ModuleInfo   0.08
   Hash::Merge::Simple             
   Moose                           0.65
-  Pod::Loom
+  Pod::Loom                       0.04
 
 
 
 CHANGES
-    Here's what's new in version 3.01 of Dist::Zilla::Plugin::PodLoom:
+    Here's what's new in version 3.02 of Dist::Zilla::Plugin::PodLoom:
     (See the file "Changes" for the full revision history.)
 
-	- For repository, prefer the 'web' key to the 'url' key
+	- List Pod::Loom version in dumped config
+	- Require latest Pod::Loom (0.04)
 
 
 

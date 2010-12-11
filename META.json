@@ -25,7 +25,7 @@
             "Dist::Zilla::Role::ModuleInfo" : "0.08",
             "Hash::Merge::Simple" : 0,
             "Moose" : "0.65",
-            "Pod::Loom" : 0
+            "Pod::Loom" : "0.04"
          }
       }
    },
@@ -37,7 +37,7 @@
          "web" : "http://github.com/madsen/dist-zilla-plugin-podloom"
       }
    },
-   "version" : "3.01",
+   "version" : "3.02",
    "x_Dist_Zilla" : {
       "plugins" : [
          {
@@ -92,8 +92,11 @@
          },
          {
             "class" : "Dist::Zilla::Plugin::PodLoom",
+            "config" : {
+               "Pod::Loom version" : "0.04"
+            },
             "name" : "@CJM/PodLoom",
-            "version" : "3.01"
+            "version" : "3.02"
          },
          {
             "class" : "Dist::Zilla::Plugin::MakeMaker",
@@ -108,7 +111,7 @@
          {
             "class" : "Dist::Zilla::Plugin::MatchManifest",
             "name" : "@CJM/MatchManifest",
-            "version" : "0.04"
+            "version" : "4.00"
          },
          {
             "class" : "Dist::Zilla::Plugin::GitVersionCheckCJM",
@@ -118,7 +121,7 @@
          {
             "class" : "Dist::Zilla::Plugin::TemplateCJM",
             "name" : "@CJM/TemplateCJM",
-            "version" : "3.00"
+            "version" : "3.04"
          },
          {
             "class" : "Dist::Zilla::Plugin::Repository",

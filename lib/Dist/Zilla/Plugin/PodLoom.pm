@@ -17,8 +17,8 @@ package Dist::Zilla::Plugin::PodLoom;
 # ABSTRACT: Process module documentation through Pod::Loom
 #---------------------------------------------------------------------
 
-our $VERSION = '3.01';
-# This file is part of Dist-Zilla-Plugin-PodLoom 3.01 (December 1, 2010)
+our $VERSION = '3.02';
+# This file is part of Dist-Zilla-Plugin-PodLoom 3.02 (December 11, 2010)
 
 
 use Moose;
@@ -114,6 +114,17 @@ sub munge_file
   return;
 } # end munge_file
 
+#---------------------------------------------------------------------
+around dump_config => sub {
+  my ($orig, $self) = @_;
+  my $config = $self->$orig;
+
+  $config->{'Pod::Loom version'} = Pod::Loom->VERSION;
+
+  return $config;
+}; # end dump_config
+
+#---------------------------------------------------------------------
 no Moose;
 __PACKAGE__->meta->make_immutable;
 1;
@@ -126,9 +137,9 @@ Dist::Zilla::Plugin::PodLoom - Process module documentation through Pod::Loom
 
 =head1 VERSION
 
-This document describes version 3.01 of
-Dist::Zilla::Plugin::PodLoom, released December 1, 2010
-as part of Dist-Zilla-Plugin-PodLoom version 3.01.
+This document describes version 3.02 of
+Dist::Zilla::Plugin::PodLoom, released December 11, 2010
+as part of Dist-Zilla-Plugin-PodLoom version 3.02.
 
 =head1 SYNOPSIS
 

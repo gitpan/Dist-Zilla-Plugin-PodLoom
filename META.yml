@@ -17,10 +17,10 @@ requires:
   Dist::Zilla::Role::ModuleInfo: 0.08
   Hash::Merge::Simple: 0
   Moose: 0.65
-  Pod::Loom: 0
+  Pod::Loom: 0.04
 resources:
   repository: git://github.com/madsen/dist-zilla-plugin-podloom.git
-version: 3.01
+version: 3.02
 x_Dist_Zilla:
   plugins:
     -
@@ -65,8 +65,10 @@ x_Dist_Zilla:
       version: 4.102343
     -
       class: Dist::Zilla::Plugin::PodLoom
+      config:
+        Pod::Loom version: 0.04
       name: '@CJM/PodLoom'
-      version: 3.01
+      version: 3.02
     -
       class: Dist::Zilla::Plugin::MakeMaker
       name: '@CJM/MakeMaker'
@@ -78,7 +80,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::MatchManifest
       name: '@CJM/MatchManifest'
-      version: 0.04
+      version: 4.00
     -
       class: Dist::Zilla::Plugin::GitVersionCheckCJM
       name: '@CJM/GitVersionCheckCJM'
@@ -86,7 +88,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::TemplateCJM
       name: '@CJM/TemplateCJM'
-      version: 3.00
+      version: 3.04
     -
       class: Dist::Zilla::Plugin::Repository
       name: '@CJM/Repository'

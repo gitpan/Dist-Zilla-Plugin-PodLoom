@@ -24,9 +24,9 @@ my %WriteMakefileArgs = (
     'Dist::Zilla::Role::ModuleInfo' => '0.08',
     'Hash::Merge::Simple' => '0',
     'Moose' => '0.65',
-    'Pod::Loom' => '0'
+    'Pod::Loom' => '0.04'
   },
-  'VERSION' => '3.01',
+  'VERSION' => '3.02',
   'test' => {
     'TESTS' => 't/*.t'
   }
