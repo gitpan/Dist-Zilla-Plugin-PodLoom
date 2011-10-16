@@ -1,4 +1,4 @@
-Dist::Zilla::Plugin::PodLoom version 4.00, released May 5, 2011
+Dist::Zilla::Plugin::PodLoom version 4.01, released October 15, 2011
 
 
 Dist::Zilla::Plugin::PodLoom is a plugin for Dist::Zilla that
@@ -21,19 +21,21 @@ DEPENDENCIES
 
   Package                        Minimum Version
   ------------------------------ ---------------
+  perl                            5.008
   Dist::Zilla                     4.200001
+  Dist::Zilla::Role::FileMunger   
   Dist::Zilla::Role::ModuleInfo   0.08
   Hash::Merge::Simple             
   Moose                           0.65
-  Pod::Loom                       0.04
+  Pod::Loom                       0.05
 
 
 
 CHANGES
-    Here's what's new in version 4.00 of Dist::Zilla::Plugin::PodLoom:
+    Here's what's new in version 4.01 of Dist::Zilla::Plugin::PodLoom:
     (See the file "Changes" for the full revision history.)
 
-	- Fix compatibility with (and require) Dist::Zilla 4.200001+
+	- Support custom bugtracker (require Pod::Loom 0.05)
 
 
 

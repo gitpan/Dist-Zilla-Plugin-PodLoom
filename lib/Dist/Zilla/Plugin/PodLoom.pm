@@ -17,17 +17,22 @@ package Dist::Zilla::Plugin::PodLoom;
 # ABSTRACT: Process module documentation through Pod::Loom
 #---------------------------------------------------------------------
 
-our $VERSION = '4.00';
-# This file is part of Dist-Zilla-Plugin-PodLoom 4.00 (May 5, 2011)
+our $VERSION = '4.01';
+# This file is part of Dist-Zilla-Plugin-PodLoom 4.01 (October 15, 2011)
 
 
-use Moose;
+use Moose 0.65; # attr fulfills requires
 #use Moose::Autobox;
 with qw(Dist::Zilla::Role::FileMunger
         Dist::Zilla::Role::ModuleInfo);
 
+# List minimum versions for AutoPrereqs:
+use 5.008;
+use Dist::Zilla 4.200001 ();               # abstract_from_file change
+use Dist::Zilla::Role::ModuleInfo 0.08 (); # from Plugins, not PluginBundle
+
 use Hash::Merge::Simple ();
-use Pod::Loom ();
+use Pod::Loom 0.05 (); # bugtracker
 
 
 has template => (
@@ -100,6 +105,7 @@ sub munge_file
       dist           => $self->zilla->name,
       license_notice => $self->zilla->license->notice,
       ($info->name ? (module => $info->name) : ()),
+      bugtracker     => $self->zilla->distmeta->{resources}{bugtracker},
       repository     => $repo->{web} || $repo->{url},
       # Have to stringify version object:
       ($info->version ? (version => q{} . $info->version) : ()),
@@ -137,9 +143,9 @@ Dist::Zilla::Plugin::PodLoom - Process module documentation through Pod::Loom
 
 =head1 VERSION
 
-This document describes version 4.00 of
-Dist::Zilla::Plugin::PodLoom, released May 5, 2011
-as part of Dist-Zilla-Plugin-PodLoom version 4.00.
+This document describes version 4.01 of
+Dist::Zilla::Plugin::PodLoom, released October 15, 2011
+as part of Dist-Zilla-Plugin-PodLoom version 4.01.
 
 =head1 SYNOPSIS
 
@@ -227,10 +233,10 @@ No bugs have been reported.
 
 Christopher J. Madsen  S<C<< <perl AT cjmweb.net> >>>
 
-Please report any bugs or feature requests to
-S<C<< <bug-Dist-Zilla-Plugin-PodLoom AT rt.cpan.org> >>>,
+Please report any bugs or feature requests
+to S<C<< <bug-Dist-Zilla-Plugin-PodLoom AT rt.cpan.org> >>>
 or through the web interface at
-L<http://rt.cpan.org/Public/Bug/Report.html?Queue=Dist-Zilla-Plugin-PodLoom>
+L<< http://rt.cpan.org/Public/Bug/Report.html?Queue=Dist-Zilla-Plugin-PodLoom >>.
 
 You can follow or contribute to Dist-Zilla-Plugin-PodLoom's development at
 L<< http://github.com/madsen/dist-zilla-plugin-podloom >>.
