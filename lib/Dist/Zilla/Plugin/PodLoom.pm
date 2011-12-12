@@ -17,14 +17,18 @@ package Dist::Zilla::Plugin::PodLoom;
 # ABSTRACT: Process module documentation through Pod::Loom
 #---------------------------------------------------------------------
 
-our $VERSION = '4.01';
-# This file is part of Dist-Zilla-Plugin-PodLoom 4.01 (October 15, 2011)
+our $VERSION = '4.10';
+# This file is part of Dist-Zilla-Plugin-PodLoom 4.10 (December 12, 2011)
 
 
 use Moose 0.65; # attr fulfills requires
-#use Moose::Autobox;
-with qw(Dist::Zilla::Role::FileMunger
-        Dist::Zilla::Role::ModuleInfo);
+use Moose::Autobox;
+with(qw(Dist::Zilla::Role::FileMunger
+        Dist::Zilla::Role::ModuleInfo
+        Dist::Zilla::Role::FileFinderUser) => {
+          default_finders => [ ':InstallModules' ],
+        },
+);
 
 # List minimum versions for AutoPrereqs:
 use 5.008;
@@ -86,12 +90,16 @@ sub _initialize_data
 } # end _initialize_data
 
 #---------------------------------------------------------------------
+sub munge_files {
+  my ($self) = @_;
+
+  $self->munge_file($_) for $self->found_files->flatten;
+} # end munge_files
+
+#---------------------------------------------------------------------
 sub munge_file
 {
   my ($self, $file) = @_;
-
-  return unless $file->name =~ /\.(?:pm|pod)$/i
-            and ($file->name !~ m{/} or $file->name =~ m{^lib/});
 
   my $info = $self->get_module_info($file);
 
@@ -143,9 +151,9 @@ Dist::Zilla::Plugin::PodLoom - Process module documentation through Pod::Loom
 
 =head1 VERSION
 
-This document describes version 4.01 of
-Dist::Zilla::Plugin::PodLoom, released October 15, 2011
-as part of Dist-Zilla-Plugin-PodLoom version 4.01.
+This document describes version 4.10 of
+Dist::Zilla::Plugin::PodLoom, released December 12, 2011
+as part of Dist-Zilla-Plugin-PodLoom version 4.10.
 
 =head1 SYNOPSIS
 
@@ -214,7 +222,14 @@ The Dist::Zilla object itself
 
 
 =for Pod::Coverage
-munge_file
+munge_files?
+
+=head2 finder
+
+This is the name of a L<FileFinder|Dist::Zilla::Role::FileFinder>
+whose files will be processed by L<Pod::Loom>.  It may be specified
+multiple times.  The default value is C<:InstallModules>.
+
 
 =head2 template
 

@@ -12,8 +12,8 @@ my %WriteMakefileArgs = (
   "ABSTRACT" => "Dist::Zilla plugin for Pod::Loom",
   "AUTHOR" => "Christopher J. Madsen <perl\@cjmweb.net>",
   "BUILD_REQUIRES" => {
-    "Dist::Zilla::Tester" => "4.200001",
     "Encode" => 0,
+    "Test::DZil" => 0,
     "Test::More" => "0.88"
   },
   "CONFIGURE_REQUIRES" => {
@@ -29,9 +29,10 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Role::ModuleInfo" => "0.08",
     "Hash::Merge::Simple" => 0,
     "Moose" => "0.65",
+    "Moose::Autobox" => 0,
     "Pod::Loom" => "0.05"
   },
-  "VERSION" => "4.01",
+  "VERSION" => "4.10",
   "test" => {
     "TESTS" => "t/*.t"
   }
