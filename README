@@ -1,4 +1,4 @@
-Dist::Zilla::Plugin::PodLoom version 4.10, released December 12, 2011
+Dist::Zilla::Plugin::PodLoom version 5.00, released November 13, 2013
 
 
 Dist::Zilla::Plugin::PodLoom is a plugin for Dist::Zilla that
@@ -21,7 +21,7 @@ DEPENDENCIES
 
   Package                        Minimum Version
   ------------------------------ ---------------
-  perl                            5.008
+  perl                            5.8.0
   Dist::Zilla                     4.200001
   Dist::Zilla::Role::FileMunger   
   Dist::Zilla::Role::ModuleInfo   0.08
@@ -33,21 +33,17 @@ DEPENDENCIES
 
 
 CHANGES
-    Here's what's new in version 4.10 of Dist::Zilla::Plugin::PodLoom:
+    Here's what's new in version 5.00 of Dist::Zilla::Plugin::PodLoom:
     (See the file "Changes" for the full revision history.)
 
-	*** POTENTIALLY INCOMPATIBLE CHANGE ***
-	- PodLoom is now a FileFinderUser (defaulting to :InstallModules)
-
-	  In most cases, this should not be an issue, but if you had
-	  modules in the root directory, they won't be processed by
-	  PodLoom anymore unless you override :InstallModules.
+	- Now compatible with Dist::Zilla 5 (but still works with 4)
+	  Fixes RT#90330. (Thanks, Andreas Koenig.)
 
 
 
 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Christopher J. Madsen.
+This software is copyright (c) 2013 by Christopher J. Madsen.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

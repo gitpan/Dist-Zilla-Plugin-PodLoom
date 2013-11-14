@@ -17,8 +17,8 @@ package Dist::Zilla::Plugin::PodLoom;
 # ABSTRACT: Process module documentation through Pod::Loom
 #---------------------------------------------------------------------
 
-our $VERSION = '4.10';
-# This file is part of Dist-Zilla-Plugin-PodLoom 4.10 (December 12, 2011)
+our $VERSION = '5.00';
+# This file is part of Dist-Zilla-Plugin-PodLoom 5.00 (November 13, 2013)
 
 
 use Moose 0.65; # attr fulfills requires
@@ -121,9 +121,11 @@ sub munge_file
     }, $self->data,
   );
 
-  my $content = $file->content;
+  my $method = Dist::Zilla->VERSION < 5 ? 'content' : 'encoded_content';
 
-  $file->content( $self->loom->weave(\$content, $file->name, $dataHash) );
+  my $content = $file->$method;
+
+  $file->$method( $self->loom->weave(\$content, $file->name, $dataHash) );
 
   return;
 } # end munge_file
@@ -151,9 +153,9 @@ Dist::Zilla::Plugin::PodLoom - Process module documentation through Pod::Loom
 
 =head1 VERSION
 
-This document describes version 4.10 of
-Dist::Zilla::Plugin::PodLoom, released December 12, 2011
-as part of Dist-Zilla-Plugin-PodLoom version 4.10.
+This document describes version 5.00 of
+Dist::Zilla::Plugin::PodLoom, released November 13, 2013
+as part of Dist-Zilla-Plugin-PodLoom version 5.00.
 
 =head1 SYNOPSIS
 
@@ -254,11 +256,11 @@ or through the web interface at
 L<< http://rt.cpan.org/Public/Bug/Report.html?Queue=Dist-Zilla-Plugin-PodLoom >>.
 
 You can follow or contribute to Dist-Zilla-Plugin-PodLoom's development at
-L<< http://github.com/madsen/dist-zilla-plugin-podloom >>.
+L<< https://github.com/madsen/dist-zilla-plugin-podloom >>.
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Christopher J. Madsen.
+This software is copyright (c) 2013 by Christopher J. Madsen.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
